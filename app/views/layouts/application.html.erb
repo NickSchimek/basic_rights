@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BasicRights</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <li>
+      <%= link_to 'Home', root_path %>
+      <%= link_to 'About', about_path %>
+      <%= link_to 'Contact', contact_path %>
+      </li>
+    </nav>
+    <%= yield %>
+  </body>
+</html>
