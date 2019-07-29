@@ -1,6 +1,15 @@
 language: ruby
 addons:
-  postgresql: "9.6"
+  postgresql: '9.6'
 script:
 - bundle exec rake db:create db:schema:load
 - bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: ntnLQ7cNkVTrw+eAOpbb3379MQgQCkkKz+W7B/8hyFrF/7Z8veWu03zziaKpfUAQhwbn2sVFnMnkVMKu0xLDDUP/FpEk9ftrrkk+MQA9/ep8p65kiljbRx0E/+1zuuXAAsgW5apmpoY0WXZe8Q80Zj6lPNAr2sGm0M1jo/MWlIEVD42g/klLdoAY48bz+PZKCFRNPmQ3RzmKnHo1mGei3NdhW/aMCsz/qg09iKE2+u6Rj0vCJlA2ah7e2NoMSe32A9OV+Aq3I2lGNHHuu4VPMVIxoUxxtZHGeGcTmrgKYiIqbJeFWv5nObHmYAfj7A/hfQdRmPOrzcy2NerbGKNdSTEsn+BUVJmyvvL3F3CribgyqJuV5XMx9ulBtf2nOu+NAZDG7KkSNKIgyqdgENj6qJv+eiSS36VF5xvup3cOhWhPQBbpe+bGMrjcHvo8XUguD0lNsRjiBovp4C4Uf5e9/Lbkt3P0SL9qDoGptJqiUHeFAM4OhbBQQf4TsiP3E7frmyFEv58pMd33GYSauXqTs7ZqIlLxyzMS5Xy2NTcxDMdCdF/b1seqToqmAMQKU4VQpID2Fsz9OYXCqKvGNVfx01Ukj+0yoR1tcZF+PtLwZvcSb3aDfZYgyqKMH/1uqs7FEiCn9uODCf3NqqB30b1gjEkfBN92FgCIQvDSJeL6O7Q=
+  app:
+    master: basic-rights-development
+  run:
+    - sleep 30
+    - 'rails db:migrate'
