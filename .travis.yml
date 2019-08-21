@@ -2,8 +2,9 @@ language: ruby
 addons:
   postgresql: '9.6'
 script:
-- bundle exec rake db:create db:schema:load
-- bundle exec rspec
+  - yarn install
+  - bundle exec rake db:create db:schema:load
+  - bundle exec rspec
 deploy:
   provider: heroku
   api_key:
