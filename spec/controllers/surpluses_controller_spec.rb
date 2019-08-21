@@ -29,11 +29,11 @@ RSpec.describe SurplusesController, type: :controller do
   # Surpluse. As you add validations to Surpluse, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { resource: 'not empty', active: true }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { resource: '', active: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,14 +97,14 @@ RSpec.describe SurplusesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { active: false }
       }
 
       it "updates the requested surpluse" do
         surpluse = Surpluse.create! valid_attributes
         put :update, params: {id: surpluse.to_param, surpluse: new_attributes}, session: valid_session
         surpluse.reload
-        skip("Add assertions for updated state")
+        expect(surpluse).to have_attributes(new_attributes)
       end
 
       it "redirects to the surpluse" do
