@@ -29,11 +29,11 @@ RSpec.describe OrganizationsController, type: :controller do
   # Organization. As you add validations to Organization, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {name: 'basic-rights', contact: ''}
+    { name: '211 info' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: '' }
   }
 
   # This should return the minimal set of values that should be in the session
