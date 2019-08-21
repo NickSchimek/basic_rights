@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :surpluses
   resources :needs
   resources :organizations
   root 'site_pages#home'
