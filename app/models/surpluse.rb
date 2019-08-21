@@ -1,0 +1,2 @@
+class Surpluse < ApplicationRecord
+end
