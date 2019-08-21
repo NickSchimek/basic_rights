@@ -4,7 +4,7 @@ class CreateNeeds < ActiveRecord::Migration[6.0]
       t.string :resource
       t.string :description
       t.integer :quantity
-      t.boolean :active
+      t.boolean :active, null: false, default: true
 
       t.timestamps
     end
