@@ -31,3 +31,6 @@ yarn-debug.log*
 .yarn-integrity
 
 .DS_Store
+
+# Ignore RSpec support file for the --only-failures feature.
+spec/examples.txt
