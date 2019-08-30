@@ -6,6 +6,6 @@ RSpec.describe Organization, type: :model do
   end
 
   describe 'relationships' do
-    it { should have_many(:needs) }
+    it { should have_many(:needs).dependent(:destroy) }
   end
 end
