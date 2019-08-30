@@ -1,4 +1,4 @@
-<%= form_with(model: need, local: true) do |form| %>
+<%= form_with(model: [@organization, @need], local: true) do |form| %>
   <% if need.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(need.errors.count, "error") %> prohibited this need from being saved:</h2>

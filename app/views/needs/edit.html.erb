@@ -2,5 +2,5 @@
 
 <%= render 'form', need: @need %>
 
-<%= link_to 'Show', @need %> |
-<%= link_to 'Back', needs_path %>
+<%= link_to 'Show', [@organization, @need] %> |
+<%= link_to 'Back', organization_needs_path(@organization) %>
