@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :surpluses
-  resources :needs
-  resources :organizations
+
+  resources :organizations do
+    resources :needs
+  end
 end
