@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'site_pages#contact'
 
   resources :users
-  resources :surpluses
+  resources :surplus
 
   resources :organizations do
     resources :needs

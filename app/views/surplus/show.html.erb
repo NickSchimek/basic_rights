@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @surplus.resource %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @surplus.description %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @surplus.quantity %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @surplus.active %>
+</p>
+
+<%= link_to 'Edit', edit_surplu_path(@surplus) %> |
+<%= link_to 'Back', surplus_path %>

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "surpluses/show", type: :view do
+RSpec.describe "surplus/show", type: :view do
   before(:each) do
-    @surpluse = assign(:surpluse, Surpluse.create!(
+    @surplus = assign(:surplus, Surplu.create!(
       :resource => "Resource",
       :description => "Description",
       :quantity => 2,

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Surplus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @surplus.each do |surplus| %>
+      <tr>
+        <td><%= surplus.resource %></td>
+        <td><%= surplus.description %></td>
+        <td><%= surplus.quantity %></td>
+        <td><%= surplus.active %></td>
+        <td><%= link_to 'Show', surplus %></td>
+        <td><%= link_to 'Edit', edit_surplu_path(surplus) %></td>
+        <td><%= link_to 'Destroy', surplus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Surplus', new_surplu_path %>

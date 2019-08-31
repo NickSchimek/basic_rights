@@ -1,4 +1,4 @@
-class Surpluse < ApplicationRecord
+class Surplu < ApplicationRecord
 
   validates :resource, presence: true
 end
