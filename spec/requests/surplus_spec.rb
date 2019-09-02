@@ -8,4 +8,12 @@ RSpec.describe "Surplus", type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe "GET /surplus" do
+    let!(:surplus) { [create(:surplus, resource: 'surplus_one'), create(:surplus, resource: 'surplus_two')] }
+    it "lists all organizations surplus" do
+      get surplus_path
+      expect(response.body).to include('surplus_one', 'surplus_two')
+    end
+  end
 end
