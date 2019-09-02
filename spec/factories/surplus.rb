@@ -4,5 +4,6 @@ FactoryBot.define do
     description { 'description' }
     quantity { 5 }
     active { true }
+    organization
   end
 end

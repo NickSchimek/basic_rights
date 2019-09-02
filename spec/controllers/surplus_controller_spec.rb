@@ -22,6 +22,7 @@ RSpec.describe SurplusController, type: :controller do
 
   describe "GET" do
     let(:surplus) { create(:surplus) }
+
     describe "#index" do
       it "returns a success response" do
         get :index, params: { organization_id: organization }, session: valid_session

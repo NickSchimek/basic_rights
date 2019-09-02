@@ -3,21 +3,21 @@ class SurplusController < ApplicationController
   before_action :set_organization
 
   def index
-    @surplus = Surplu.all
+    @surplus = @organization.surplus.all
   end
 
   def show
   end
 
   def new
-    @surplus = Surplu.new
+    @surplus = @organization.surplus.new
   end
 
   def edit
   end
 
   def create
-    @surplus = Surplu.new(surplus_params)
+    @surplus = @organization.surplus.new(surplus_params)
 
     respond_to do |format|
       if @surplus.save
