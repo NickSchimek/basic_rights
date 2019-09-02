@@ -20,9 +20,9 @@
         <td><%= surplus.description %></td>
         <td><%= surplus.quantity %></td>
         <td><%= surplus.active %></td>
-        <td><%= link_to 'Show', surplus %></td>
-        <td><%= link_to 'Edit', edit_surplu_path(surplus) %></td>
-        <td><%= link_to 'Destroy', surplus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@organization, surplus] %></td>
+        <td><%= link_to 'Edit', edit_organization_surplu_path(@organization, surplus) %></td>
+        <td><%= link_to 'Destroy', [@organization, surplus], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Surplus', new_surplu_path %>
+<%= link_to 'New Surplus', new_organization_surplu_path(@organization) %>

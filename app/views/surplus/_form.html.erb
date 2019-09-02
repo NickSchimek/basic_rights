@@ -1,4 +1,4 @@
-<%= form_with(model: surplus, local: true) do |form| %>
+<%= form_with(model: [@organization, surplus], local: true) do |form| %>
   <% if surplus.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(surplus.errors.count, "error") %> prohibited this surplus from being saved:</h2>
