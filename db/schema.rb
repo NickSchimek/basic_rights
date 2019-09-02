@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_060456) do
+ActiveRecord::Schema.define(version: 2019_09_02_001049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,13 +35,15 @@ ActiveRecord::Schema.define(version: 2019_08_26_060456) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "surpluses", force: :cascade do |t|
+  create_table "surplus", force: :cascade do |t|
     t.string "resource"
     t.string "description"
     t.integer "quantity"
     t.boolean "active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organization_id", null: false
+    t.index ["organization_id"], name: "index_surplus_on_organization_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,4 +56,5 @@ ActiveRecord::Schema.define(version: 2019_08_26_060456) do
   end
 
   add_foreign_key "needs", "organizations"
+  add_foreign_key "surplus", "organizations"
 end
