@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+.scroll-bar {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table, th, td {
+  border: 1px solid gray;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.bottom-spacing {
+  margin-bottom: 10px;
+}
