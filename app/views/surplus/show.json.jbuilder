@@ -1,1 +1,1 @@
-json.partial! "surplus/surplus", surplus: @surplus
+json.partial! "surplus/surplu", surplus: @surplus

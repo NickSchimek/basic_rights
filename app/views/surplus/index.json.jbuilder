@@ -1,1 +1,1 @@
-json.array! @surplus, partial: "surplus/surplus", as: :surplus
+json.array! @surplus, partial: "surplus/surplu", as: :surplus
