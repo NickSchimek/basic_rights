@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :claim do
-    quantity { "" }
-    picked_up { "" }
-    active { "" }
-    surplu { "" }
-    organization { nil }
+    quantity { 2 }
+    picked_up { false }
+    active { true }
+    association :surplu, factory: :surplus
+    organization
   end
 end

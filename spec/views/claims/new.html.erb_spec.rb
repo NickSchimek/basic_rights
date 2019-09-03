@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "claims/new", type: :view do
   before(:each) do
-    assign(:claim, Claim.new(
-      :quantity => "",
-      :picked_up => "",
-      :active => "",
-      :surplu => "",
-      :organization => nil
-    ))
+    assign(:claim, build(:claim))
   end
 
   it "renders new claim form" do

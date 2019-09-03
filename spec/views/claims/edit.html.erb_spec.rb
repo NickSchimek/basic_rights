@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "claims/edit", type: :view do
   before(:each) do
-    @claim = assign(:claim, Claim.create!(
-      :quantity => "",
-      :picked_up => "",
-      :active => "",
-      :surplu => "",
-      :organization => nil
-    ))
+    @claim = assign(:claim, create(:claim))
   end
 
   it "renders the edit claim form" do
