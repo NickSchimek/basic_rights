@@ -1,9 +1,13 @@
 class SurplusController < ApplicationController
   before_action :set_surplus, only: [:show, :edit, :update, :destroy]
-  before_action :set_organization
+  before_action :set_organization, except: [:grouped_index]
 
   def index
     @surplus = @organization.surplus.all
+  end
+
+  def grouped_index
+    @organizations = Organization.all.includes(:surplus)
   end
 
   def show

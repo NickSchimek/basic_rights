@@ -2,6 +2,14 @@ require "rails_helper"
 
 RSpec.describe NeedsController, type: :routing do
   describe "routing" do
+    it "routes to #grouped_index" do
+      expect(get: "needs").to route_to("needs#grouped_index")
+    end
+
+    it "routes to #surplus_index" do
+      expect(get: "surplus").to route_to("surplus#grouped_index")
+    end
+
     it "routes to #index" do
       expect(:get => "organizations/1/needs").to route_to("needs#index", organization_id: '1')
     end

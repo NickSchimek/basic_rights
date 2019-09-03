@@ -1,9 +1,13 @@
 class NeedsController < ApplicationController
   before_action :set_need, only: [:show, :edit, :update, :destroy]
-  before_action :set_organization
+  before_action :set_organization, except: [:grouped_index]
 
   def index
     @needs = @organization.needs.all
+  end
+
+  def grouped_index
+    @organizations = Organization.all.includes(:needs)
   end
 
   def show
