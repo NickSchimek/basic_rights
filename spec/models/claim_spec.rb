@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Claim, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'relationships' do
+    it { should belong_to(:organization) }
+    it { should belong_to(:surplu) }
+  end
 end
