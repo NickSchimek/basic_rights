@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "claims/index", type: :view do
   before(:each) do
     assign(:claims, create_list(:claim, 2))
+    assign(:surplus, create(:surplus))
   end
 
   it "renders a list of claims" do

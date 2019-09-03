@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :claims
   root 'site_pages#home'
   get 'about', to: 'site_pages#about'
   get 'contact', to: 'site_pages#contact'
@@ -11,5 +10,6 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :needs
     resources :surplus
+    resources :claims
   end
 end

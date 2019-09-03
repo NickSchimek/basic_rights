@@ -22,9 +22,9 @@
         <td><%= claim.active %></td>
         <td><%= claim.surplu %></td>
         <td><%= claim.organization_id %></td>
-        <td><%= link_to 'Show', claim %></td>
-        <td><%= link_to 'Edit', edit_claim_path(claim) %></td>
-        <td><%= link_to 'Destroy', claim, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', surplu_claim_path(@surplus, claim) %></td>
+        <td><%= link_to 'Edit', edit_surplu_claim_path(@surplus, claim) %></td>
+        <td><%= link_to 'Destroy', [@surplus, claim], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Claim', new_claim_path %>
+<%= link_to 'New Claim', new_surplu_claim_path(@surplus) %>

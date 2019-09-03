@@ -1,4 +1,4 @@
-<%= form_with(model: claim, local: true) do |form| %>
+<%= form_with(model: [@surplus, claim], local: true) do |form| %>
   <% if claim.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(claim.errors.count, "error") %> prohibited this claim from being saved:</h2>
