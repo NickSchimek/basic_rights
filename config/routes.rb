@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :organizations do
     resources :needs
-    resources :surplus
+    resources :surplus, only: [:index, :new, :create]
+    resources :claims, only: [:index]
+  end
+  resources :surplus, only: [:show, :edit, :update, :destroy] do
     resources :claims
   end
 end
