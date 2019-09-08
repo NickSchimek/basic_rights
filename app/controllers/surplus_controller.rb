@@ -1,6 +1,6 @@
 class SurplusController < ApplicationController
   before_action :set_surplus, only: [:show, :edit, :update, :destroy]
-  before_action :set_organization, except: [:grouped_index]
+  before_action :set_organization, only: [:index, :create, :new]
 
   def index
     @surplus = @organization.surplus.all
@@ -25,8 +25,8 @@ class SurplusController < ApplicationController
 
     respond_to do |format|
       if @surplus.save
-        format.html { redirect_to [@organization, @surplus], notice: 'Surplus was successfully created.' }
-        format.json { render :show, status: :created, location: [@organization, @surplus] }
+        format.html { redirect_to @surplus, notice: 'Surplus was successfully created.' }
+        format.json { render :show, status: :created, location: @surplus }
       else
         format.html { render :new }
         format.json { render json: @surplus.errors, status: :unprocessable_entity }
@@ -37,8 +37,8 @@ class SurplusController < ApplicationController
   def update
     respond_to do |format|
       if @surplus.update(surplus_params)
-        format.html { redirect_to [@organization, @surplus], notice: 'Surplus was successfully updated.' }
-        format.json { render :show, status: :ok, location: [@organization, @surplus] }
+        format.html { redirect_to @surplus, notice: 'Surplus was successfully updated.' }
+        format.json { render :show, status: :ok, location: @surplus }
       else
         format.html { render :edit }
         format.json { render json: @surplus.errors, status: :unprocessable_entity }
@@ -49,7 +49,7 @@ class SurplusController < ApplicationController
   def destroy
     @surplus.destroy
     respond_to do |format|
-      format.html { redirect_to organization_surplus_url, notice: 'Surplus was successfully destroyed.' }
+      format.html { redirect_to organization_surplus_url(@surplus.organization), notice: 'Surplus was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -57,7 +57,7 @@ class SurplusController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_surplus
-      @surplus = Surplu.find(params[:id])
+      @surplus = Surplu.includes(:organization).find(params[:id])
     end
 
     def set_organization
