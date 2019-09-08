@@ -22,7 +22,7 @@
         <td><%= surplus.active %></td>
         <td><%= link_to 'Show', surplus %></td>
         <td><%= link_to 'Edit', surplus %></td>
-        <td><%= link_to 'Destroy', surplus, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Claim', new_surplu_claim_path(surplus) %></td>
       </tr>
     <% end %>
   </tbody>
