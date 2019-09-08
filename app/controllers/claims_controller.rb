@@ -1,9 +1,13 @@
 class ClaimsController < ApplicationController
   before_action :set_claim, only: [:show, :edit, :update, :destroy]
-  before_action :set_surplus
+  before_action :set_surplus, except: :org_index
 
   def index
     @claims = @surplus.claims.all
+  end
+
+  def org_index
+    @claims = Claim.includes(:surplu).where organization_id: params[:organization_id]
   end
 
   def show

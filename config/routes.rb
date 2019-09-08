@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :needs
     resources :surplus, only: [:index, :new, :create]
-    resources :claims, only: [:index]
+    get 'claims', to: 'claims#org_index'
   end
   resources :surplus, only: [:show, :edit, :update, :destroy] do
     resources :claims
