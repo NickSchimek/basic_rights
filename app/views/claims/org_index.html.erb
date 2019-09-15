@@ -20,8 +20,8 @@
         <td><%= claim.quantity %></td>
         <td><%= claim.picked_up %></td>
         <td><%= claim.active %></td>
-        <td><%= claim.surplu %></td>
-        <td><%= claim.organization_id %></td>
+        <td><%= claim.surplu.resource %></td>
+        <td><%= claim.organization.name %></td>
         <td><%= link_to 'Show', surplu_claim_path(claim.surplu, claim) %></td>
         <td><%= link_to 'Edit', edit_surplu_claim_path(claim.surplu, claim) %></td>
         <td><%= link_to 'Destroy', [claim.surplu, claim], method: :delete, data: { confirm: 'Are you sure?' } %></td>

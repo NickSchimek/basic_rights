@@ -17,12 +17,12 @@
 
 <p>
   <strong>Surplu:</strong>
-  <%= @claim.surplu %>
+  <%= @claim.surplu.resource %>
 </p>
 
 <p>
   <strong>Organization:</strong>
-  <%= @claim.organization_id %>
+  <%= @claim.organization.name %>
 </p>
 
 <%= link_to 'Edit', edit_surplu_claim_path(@surplus, @claim) %> |
