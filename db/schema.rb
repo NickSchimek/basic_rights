@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_001049) do
+ActiveRecord::Schema.define(version: 2019_09_03_033956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "claims", force: :cascade do |t|
+    t.integer "quantity"
+    t.boolean "picked_up", default: false, null: false
+    t.boolean "active", default: true, null: false
+    t.bigint "surplu_id", null: false
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_claims_on_organization_id"
+    t.index ["surplu_id"], name: "index_claims_on_surplu_id"
+  end
 
   create_table "needs", force: :cascade do |t|
     t.string "resource"
@@ -55,6 +67,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_001049) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "claims", "organizations"
+  add_foreign_key "claims", "surplus"
   add_foreign_key "needs", "organizations"
   add_foreign_key "surplus", "organizations"
 end

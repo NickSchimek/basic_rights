@@ -2,5 +2,5 @@
 
 <%= render 'form', surplus: @surplus %>
 
-<%= link_to 'Show', organization_surplu_path(@organization, @surplus) %> |
-<%= link_to 'Back', organization_surplus_path(@organization) %>
+<%= link_to 'Show', @surplus %> |
+<%= link_to 'Back', organization_surplus_path(@surplus.organization) %>

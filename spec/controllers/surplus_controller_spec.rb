@@ -62,7 +62,7 @@ RSpec.describe SurplusController, type: :controller do
 
       it "redirects to the created surplus" do
         post :create, params: { surplu: valid_attributes, organization_id: organization }, session: valid_session
-        expect(response).to redirect_to([organization, Surplu.last])
+        expect(response).to redirect_to(Surplu.last)
       end
     end
 
@@ -90,7 +90,7 @@ RSpec.describe SurplusController, type: :controller do
 
         it "redirects to the surplus" do
           put :update, params: { id: surplus.to_param, surplu: valid_attributes, organization_id: organization }, session: valid_session
-          expect(response).to redirect_to([organization, surplus])
+          expect(response).to redirect_to(surplus)
         end
       end
 
@@ -105,13 +105,13 @@ RSpec.describe SurplusController, type: :controller do
     describe "DELETE #destroy" do
       it "destroys the requested surplus" do
         expect {
-          delete :destroy, params: { id: surplus.to_param, organization_id: organization }, session: valid_session
+          delete :destroy, params: { id: surplus.to_param }, session: valid_session
         }.to change(Surplu, :count).by(-1)
       end
 
       it "redirects to the surplus list" do
-        delete :destroy, params: { id: surplus.to_param, organization_id: organization }, session: valid_session
-        expect(response).to redirect_to(organization_surplus_url)
+        delete :destroy, params: { id: surplus.to_param }, session: valid_session
+        expect(response).to redirect_to(organization_surplus_url(surplus.organization))
       end
     end
   end

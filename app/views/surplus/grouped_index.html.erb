@@ -23,9 +23,9 @@
           <td><%= surplus.description %></td>
           <td><%= surplus.quantity %></td>
           <td><%= surplus.active %></td>
-          <td><%= link_to 'Show', organization_surplu_path(surplus.organization, surplus) %></td>
-          <td><%= link_to 'Edit', edit_organization_surplu_path(surplus.organization, surplus) %></td>
-          <td><%= link_to 'Destroy', [surplus.organization, surplus], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', surplu_path(surplus) %></td>
+          <td><%= link_to 'Edit', edit_surplu_path(surplus) %></td>
+          <td><%= link_to 'Claim', new_surplu_claim_path(surplus) %></td>
         </tr>
       <% end %>
     </tbody>

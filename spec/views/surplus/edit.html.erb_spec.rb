@@ -9,7 +9,7 @@ RSpec.describe "surplus/edit", type: :view do
   it "renders the edit surplus form" do
     render
 
-    assert_select "form[action=?][method=?]", organization_surplu_path(@organization, @surplus), "post" do
+    assert_select "form[action=?][method=?]", "/surplus/#{@surplus.id}", "post" do
 
       assert_select "input[name=?]", "surplu[resource]"
 

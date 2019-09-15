@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @claim.quantity %>
+</p>
+
+<p>
+  <strong>Picked up:</strong>
+  <%= @claim.picked_up %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @claim.active %>
+</p>
+
+<p>
+  <strong>Surplu:</strong>
+  <%= @claim.surplu.resource %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @claim.organization.name %>
+</p>
+
+<%= link_to 'Edit', edit_surplu_claim_path(@surplus, @claim) %> |
+<%= link_to 'Back', surplu_claims_path(@surplus) %>
