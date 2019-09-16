@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :fulfillment do
-    quantity { "" }
-    received { "" }
-    active { "" }
-    need { "" }
-    organization { nil }
+    quantity { 2 }
+    received { false }
+    active { true }
+    need
+    organization
   end
 end
