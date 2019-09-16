@@ -9,5 +9,6 @@ RSpec.describe Organization, type: :model do
     it { should have_many(:needs).dependent(:destroy) }
     it { should have_many(:surplus).dependent(:destroy) }
     it { should have_many(:claims) }
+    it { should have_many(:fulfillments) }
   end
 end
