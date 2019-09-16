@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :fulfillments
   root 'site_pages#home'
   get 'about', to: 'site_pages#about'
   get 'contact', to: 'site_pages#contact'
