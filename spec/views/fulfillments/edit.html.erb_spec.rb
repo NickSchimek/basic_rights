@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "fulfillments/edit", type: :view do
   before(:each) do
-    @fulfillment = assign(:fulfillment, Fulfillment.create!(
-      :quantity => "",
-      :received => "",
-      :active => "",
-      :need => "",
-      :organization => nil
-    ))
+    @fulfillment = assign(:fulfillment, create(:fulfillment))
   end
 
   it "renders the edit fulfillment form" do

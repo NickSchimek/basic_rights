@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "fulfillments/new", type: :view do
   before(:each) do
-    assign(:fulfillment, Fulfillment.new(
-      :quantity => "",
-      :received => "",
-      :active => "",
-      :need => "",
-      :organization => nil
-    ))
+    assign(:fulfillment, build(:fulfillment))
   end
 
   it "renders new fulfillment form" do
