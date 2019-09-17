@@ -9,7 +9,7 @@ RSpec.describe "needs/edit", type: :view do
   it "renders the edit need form" do
     render
 
-    assert_select "form[action=?][method=?]", organization_need_path(@organization, @need), "post" do
+    assert_select "form[action=?][method=?]", need_path(@need), "post" do
 
       assert_select "input[name=?]", "need[resource]"
 

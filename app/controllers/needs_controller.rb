@@ -1,6 +1,6 @@
 class NeedsController < ApplicationController
   before_action :set_need, only: [:show, :edit, :update, :destroy]
-  before_action :set_organization, except: [:grouped_index]
+  before_action :set_organization, only: [:index, :new, :create]
 
   def index
     @needs = @organization.needs.all
@@ -25,8 +25,8 @@ class NeedsController < ApplicationController
 
     respond_to do |format|
       if @need.save
-        format.html { redirect_to [@organization, @need], notice: 'Need was successfully created.' }
-        format.json { render :show, status: :created, location: [@organization, @need] }
+        format.html { redirect_to @need, notice: 'Need was successfully created.' }
+        format.json { render :show, status: :created, location: @need }
       else
         format.html { render :new }
         format.json { render json: @need.errors, status: :unprocessable_entity }
@@ -37,8 +37,8 @@ class NeedsController < ApplicationController
   def update
     respond_to do |format|
       if @need.update(need_params)
-        format.html { redirect_to [@organization, @need], notice: 'Need was successfully updated.' }
-        format.json { render :show, status: :ok, location: [@organization, @need] }
+        format.html { redirect_to @need, notice: 'Need was successfully updated.' }
+        format.json { render :show, status: :ok, location: @need }
       else
         format.html { render :edit }
         format.json { render json: @need.errors, status: :unprocessable_entity }
@@ -49,7 +49,7 @@ class NeedsController < ApplicationController
   def destroy
     @need.destroy
     respond_to do |format|
-      format.html { redirect_to organization_needs_url, notice: 'Need was successfully destroyed.' }
+      format.html { redirect_to organization_needs_url(@need.organization), notice: 'Need was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

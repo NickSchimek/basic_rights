@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @fulfillment.quantity %>
+</p>
+
+<p>
+  <strong>Received:</strong>
+  <%= @fulfillment.received %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @fulfillment.active %>
+</p>
+
+<p>
+  <strong>Need:</strong>
+  <%= @fulfillment.need %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @fulfillment.organization_id %>
+</p>
+
+<%= link_to 'Edit', edit_need_fulfillment_path(@need, @fulfillment) %> |
+<%= link_to 'Back', need_fulfillments_path(@need) %>

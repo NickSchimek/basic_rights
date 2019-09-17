@@ -7,5 +7,6 @@ RSpec.describe Need, type: :model do
 
   describe 'relationships' do
     it { should belong_to(:organization) }
+    it { should have_many(:fulfillments) }
   end
 end

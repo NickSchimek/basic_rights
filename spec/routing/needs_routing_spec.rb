@@ -19,11 +19,11 @@ RSpec.describe NeedsController, type: :routing do
     end
 
     it "routes to #show" do
-      expect(:get => "organizations/1/needs/1").to route_to("needs#show", id: '1', organization_id: '1')
+      expect(:get => "needs/1").to route_to("needs#show", id: '1')
     end
 
     it "routes to #edit" do
-      expect(:get => "organizations/1/needs/1/edit").to route_to("needs#edit", id: '1', organization_id: '1')
+      expect(:get => "needs/1/edit").to route_to("needs#edit", id: '1')
     end
 
 
@@ -32,15 +32,15 @@ RSpec.describe NeedsController, type: :routing do
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "organizations/1/needs/1").to route_to("needs#update", id: '1', organization_id: '1')
+      expect(:put => "needs/1").to route_to("needs#update", id: '1')
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "organizations/1/needs/1").to route_to("needs#update", id: '1', organization_id: '1')
+      expect(:patch => "needs/1").to route_to("needs#update", id: '1')
     end
 
     it "routes to #destroy" do
-      expect(:delete => "organizations/1/needs/1").to route_to("needs#destroy", id: '1', organization_id: '1')
+      expect(:delete => "needs/1").to route_to("needs#destroy", id: '1')
     end
   end
 end
