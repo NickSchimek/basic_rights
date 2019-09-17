@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "fulfillments/show", type: :view do
   before(:each) do
     @fulfillment = assign(:fulfillment, create(:fulfillment))
+    @need = @fulfillment.need
   end
 
   it "renders attributes in <p>" do

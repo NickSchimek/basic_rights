@@ -62,7 +62,7 @@ RSpec.describe NeedsController, type: :controller do
 
       it "redirects to the created need" do
         post :create, params: {need: valid_attributes, organization_id: organization}, session: valid_session
-        expect(response).to redirect_to([organization, Need.last])
+        expect(response).to redirect_to(Need.last)
       end
     end
 
@@ -90,7 +90,7 @@ RSpec.describe NeedsController, type: :controller do
 
         it "redirects to the need" do
           put :update, params: {id: need.to_param, need: valid_attributes, organization_id: organization}, session: valid_session
-          expect(response).to redirect_to([organization, need])
+          expect(response).to redirect_to(need)
         end
       end
 
@@ -105,13 +105,13 @@ RSpec.describe NeedsController, type: :controller do
     describe "DELETE #destroy" do
       it "destroys the requested need" do
         expect {
-          delete :destroy, params: {id: need.to_param, organization_id: organization}, session: valid_session
+          delete :destroy, params: {id: need.to_param }, session: valid_session
         }.to change(Need, :count).by(-1)
       end
 
       it "redirects to the needs list" do
-        delete :destroy, params: {id: need.to_param, organization_id: organization}, session: valid_session
-        expect(response).to redirect_to(organization_needs_path)
+        delete :destroy, params: {id: need.to_param }, session: valid_session
+        expect(response).to redirect_to(organization_needs_path(need.organization))
       end
     end
   end

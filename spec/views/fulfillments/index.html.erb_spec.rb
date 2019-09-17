@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "fulfillments/index", type: :view do
   before(:each) do
     assign(:fulfillments, create_list(:fulfillment, 2))
+    assign(:need, create(:need))
   end
 
   it "renders a list of fulfillments" do

@@ -3,12 +3,13 @@ require 'rails_helper'
 RSpec.describe "fulfillments/new", type: :view do
   before(:each) do
     assign(:fulfillment, build(:fulfillment))
+    @need = assign(:need, create(:need))
   end
 
   it "renders new fulfillment form" do
     render
 
-    assert_select "form[action=?][method=?]", fulfillments_path, "post" do
+    assert_select "form[action=?][method=?]", need_fulfillments_path(@need), "post" do
 
       assert_select "input[name=?]", "fulfillment[quantity]"
 

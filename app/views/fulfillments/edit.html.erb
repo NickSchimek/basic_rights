@@ -2,5 +2,5 @@
 
 <%= render 'form', fulfillment: @fulfillment %>
 
-<%= link_to 'Show', @fulfillment %> |
-<%= link_to 'Back', fulfillments_path %>
+<%= link_to 'Show', edit_need_fulfillment_path(@need, @fulfillment) %> |
+<%= link_to 'Back', need_fulfillments_path(@need) %>

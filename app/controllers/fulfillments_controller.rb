@@ -1,35 +1,28 @@
 class FulfillmentsController < ApplicationController
   before_action :set_fulfillment, only: [:show, :edit, :update, :destroy]
+  before_action :set_need
 
-  # GET /fulfillments
-  # GET /fulfillments.json
   def index
-    @fulfillments = Fulfillment.all
+    @fulfillments = @need.fulfillments.all.includes(:need, :organization)
   end
 
-  # GET /fulfillments/1
-  # GET /fulfillments/1.json
   def show
   end
 
-  # GET /fulfillments/new
   def new
-    @fulfillment = Fulfillment.new
+    @fulfillment = @need.fulfillments.new
   end
 
-  # GET /fulfillments/1/edit
   def edit
   end
 
-  # POST /fulfillments
-  # POST /fulfillments.json
   def create
-    @fulfillment = Fulfillment.new(fulfillment_params)
+    @fulfillment = @need.fulfillments.new(fulfillment_params)
 
     respond_to do |format|
       if @fulfillment.save
-        format.html { redirect_to @fulfillment, notice: 'Fulfillment was successfully created.' }
-        format.json { render :show, status: :created, location: @fulfillment }
+        format.html { redirect_to [@need, @fulfillment], notice: 'Fulfillment was successfully created.' }
+        format.json { render :show, status: :created, location: [@need, @fulfillment] }
       else
         format.html { render :new }
         format.json { render json: @fulfillment.errors, status: :unprocessable_entity }
@@ -37,13 +30,11 @@ class FulfillmentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /fulfillments/1
-  # PATCH/PUT /fulfillments/1.json
   def update
     respond_to do |format|
       if @fulfillment.update(fulfillment_params)
-        format.html { redirect_to @fulfillment, notice: 'Fulfillment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fulfillment }
+        format.html { redirect_to [@need, @fulfillment], notice: 'Fulfillment was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@need, @fulfillment] }
       else
         format.html { render :edit }
         format.json { render json: @fulfillment.errors, status: :unprocessable_entity }
@@ -51,12 +42,10 @@ class FulfillmentsController < ApplicationController
     end
   end
 
-  # DELETE /fulfillments/1
-  # DELETE /fulfillments/1.json
   def destroy
     @fulfillment.destroy
     respond_to do |format|
-      format.html { redirect_to fulfillments_url, notice: 'Fulfillment was successfully destroyed.' }
+      format.html { redirect_to need_fulfillments_url(@fulfillment.need), notice: 'Fulfillment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +56,12 @@ class FulfillmentsController < ApplicationController
       @fulfillment = Fulfillment.find(params[:id])
     end
 
+    def set_need
+      @need = Need.find(params[:need_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def fulfillment_params
-      params.require(:fulfillment).permit(:quantity, :received, :active, :need, :organization_id)
+      params.require(:fulfillment).permit(:quantity, :received, :active, :need_id, :organization_id)
     end
 end

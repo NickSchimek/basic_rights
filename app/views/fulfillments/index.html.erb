@@ -22,9 +22,9 @@
         <td><%= fulfillment.active %></td>
         <td><%= fulfillment.need %></td>
         <td><%= fulfillment.organization_id %></td>
-        <td><%= link_to 'Show', fulfillment %></td>
-        <td><%= link_to 'Edit', edit_fulfillment_path(fulfillment) %></td>
-        <td><%= link_to 'Destroy', fulfillment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', need_fulfillment_path(@need, fulfillment) %></td>
+        <td><%= link_to 'Edit', edit_need_fulfillment_path(@need, fulfillment) %></td>
+        <td><%= link_to 'Destroy', [@need, fulfillment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Fulfillment', new_fulfillment_path %>
+<%= link_to 'New Fulfillment', new_need_fulfillment_path(@need) %>

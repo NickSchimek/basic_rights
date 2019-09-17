@@ -3,12 +3,13 @@ require 'rails_helper'
 RSpec.describe "fulfillments/edit", type: :view do
   before(:each) do
     @fulfillment = assign(:fulfillment, create(:fulfillment))
+    @need = assign(:need, @fulfillment.need)
   end
 
   it "renders the edit fulfillment form" do
     render
 
-    assert_select "form[action=?][method=?]", fulfillment_path(@fulfillment), "post" do
+    assert_select "form[action=?][method=?]", need_fulfillment_path(@need, @fulfillment), "post" do
 
       assert_select "input[name=?]", "fulfillment[quantity]"
 
