@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'needs', to: 'needs#grouped_index'
   get 'surplus', to: 'surplus#grouped_index'
 
-  resources :users
+  resources :users, only: [:index, :show, :destroy]
 
   resources :organizations do
     resources :needs, only: [:index, :new, :create]
