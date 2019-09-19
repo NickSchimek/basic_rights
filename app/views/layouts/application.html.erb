@@ -15,6 +15,9 @@
       <%= link_to 'Home', root_path %>
       <%= link_to 'About', about_path %>
       <%= link_to 'Contact', contact_path %>
+      <%= link_to 'Sign in', user_session_path unless current_user %>
+      <%= link_to 'Register', new_user_registration_path unless current_user %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete if current_user %>
       </li>
       <li>
         <%= link_to 'Organizations', organizations_path %>
