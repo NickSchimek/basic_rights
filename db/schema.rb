@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_151445) do
+ActiveRecord::Schema.define(version: 2019_10_03_182534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 2019_10_03_151445) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["need_id"], name: "index_fulfillments_on_need_id"
     t.index ["organization_id"], name: "index_fulfillments_on_organization_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_id"], name: "index_memberships_on_role_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "needs", force: :cascade do |t|
@@ -93,6 +102,8 @@ ActiveRecord::Schema.define(version: 2019_10_03_151445) do
   add_foreign_key "claims", "surplus"
   add_foreign_key "fulfillments", "needs"
   add_foreign_key "fulfillments", "organizations"
+  add_foreign_key "memberships", "roles"
+  add_foreign_key "memberships", "users"
   add_foreign_key "needs", "organizations"
   add_foreign_key "surplus", "organizations"
 end
