@@ -1,1 +1,65 @@
 <h1>Basic Rights</h1>
+
+<h2>Needs</h2>
+
+<% if @needs.empty? %>
+  <p>There are no active needs to be met</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Resource</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Organization</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @needs.each do |need| %>
+        <tr>
+          <td><%= need.resource %></td>
+          <td><%= need.description %></td>
+          <td><%= need.quantity %></td>
+          <td><%= need.organization.name %></td>
+          <td><%= link_to 'Show', need_path(need) %></td>
+          <td><%= link_to 'Fulfill', new_need_fulfillment_path(need) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<br>
+
+<h2>Surplus</h2>
+
+<% if @surplus.empty? %>
+  <p>There is currently no surplus</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Resource</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Organization</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @surplus.each do |surplus| %>
+        <tr>
+          <td><%= surplus.resource %></td>
+          <td><%= surplus.description %></td>
+          <td><%= surplus.quantity %></td>
+          <td><%= surplus.organization.name %></td>
+          <td><%= link_to 'Show', surplus %></td>
+          <td><%= link_to 'Claim', new_surplu_claim_path(surplus) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
