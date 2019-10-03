@@ -5,4 +5,9 @@ RSpec.describe Role, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
   end
+
+  describe 'relationships' do
+    it { should have_many(:memberships).dependent(:destroy) }
+    it { should have_many(:users).through(:memberships) }
+  end
 end
