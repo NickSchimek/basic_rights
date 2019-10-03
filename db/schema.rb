@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_010305) do
+ActiveRecord::Schema.define(version: 2019_10_03_151445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,11 @@ ActiveRecord::Schema.define(version: 2019_09_18_010305) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.index ["name"], name: "index_roles_on_name", unique: true
   end
 
   create_table "surplus", force: :cascade do |t|
