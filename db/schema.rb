@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_010305) do
+ActiveRecord::Schema.define(version: 2019_10_03_200135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2019_09_18_010305) do
     t.index ["organization_id"], name: "index_fulfillments_on_organization_id"
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_id", "user_id"], name: "index_memberships_on_role_id_and_user_id", unique: true
+    t.index ["role_id"], name: "index_memberships_on_role_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
   create_table "needs", force: :cascade do |t|
     t.string "resource"
     t.string "description"
@@ -57,6 +67,13 @@ ActiveRecord::Schema.define(version: 2019_09_18_010305) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_roles_on_name", unique: true
   end
 
   create_table "surplus", force: :cascade do |t|
@@ -88,6 +105,8 @@ ActiveRecord::Schema.define(version: 2019_09_18_010305) do
   add_foreign_key "claims", "surplus"
   add_foreign_key "fulfillments", "needs"
   add_foreign_key "fulfillments", "organizations"
+  add_foreign_key "memberships", "roles"
+  add_foreign_key "memberships", "users"
   add_foreign_key "needs", "organizations"
   add_foreign_key "surplus", "organizations"
 end

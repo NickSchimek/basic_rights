@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :udpate, :destroy]
 
   # GET /organizations
   # GET /organizations.json
@@ -15,6 +16,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
+    authorize @organization
   end
 
   # GET /organizations/1/edit
@@ -25,6 +27,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(organization_params)
+    authorize @organization
 
     respond_to do |format|
       if @organization.save
@@ -70,5 +73,9 @@ class OrganizationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
       params.require(:organization).permit(:name, :contact, :email, :phone)
+    end
+
+    def authorize_user
+      authorize @organization
     end
 end

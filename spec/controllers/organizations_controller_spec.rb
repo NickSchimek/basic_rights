@@ -41,6 +41,8 @@ RSpec.describe OrganizationsController, type: :controller do
   # OrganizationsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before(:each) { allow(controller).to receive(:authorize).and_return(true) }
+
   describe "GET #index" do
     it "returns a success response" do
       Organization.create! valid_attributes
