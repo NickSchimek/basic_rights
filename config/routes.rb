@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'site_pages#contact'
   get 'needs', to: 'needs#grouped_index'
   get 'surplus', to: 'surplus#grouped_index'
-  get 'admin', to: 'admin_tools#index'
+  get 'admin', to: 'admin_tools#show'
 
   resources :users, only: [:index, :show, :destroy]
 

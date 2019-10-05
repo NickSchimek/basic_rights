@@ -1,4 +1,5 @@
 class AdminToolsController < ApplicationController
-  def index
+  def show
+    authorize :AdminTool
   end
 end
