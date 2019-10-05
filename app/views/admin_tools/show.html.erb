@@ -1,2 +1,11 @@
-<h1>AdminTools#index</h1>
-<p>Find me in app/views/admin_tools/index.html.erb</p>
+<h1>AdminTools</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Organization</td>
+      <td><%= link_to "Show All", organizations_path %></td>
+      <td><%= link_to "Create New", new_organization_path %></td>
+    </tr>
+  </tbody>
+</table>
