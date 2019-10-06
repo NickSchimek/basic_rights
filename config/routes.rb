@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :destroy]
 
-  resources :organizations do
+  resources :organizations, except: :new do
     resources :needs, only: [:index, :new, :create]
     resources :surplus, only: [:index, :new, :create]
     get 'claims', to: 'claims#org_index'

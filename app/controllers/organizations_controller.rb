@@ -13,12 +13,6 @@ class OrganizationsController < ApplicationController
   def show
   end
 
-  # GET /organizations/new
-  def new
-    @organization = Organization.new
-    authorize @organization
-  end
-
   # GET /organizations/1/edit
   def edit
   end
