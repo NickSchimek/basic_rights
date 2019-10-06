@@ -31,10 +31,10 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
+        format.html { redirect_to admin_path, notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }
       else
-        format.html { render :new }
+        format.html { render 'admin_tools/show' }
         format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end

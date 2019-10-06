@@ -1,11 +1,7 @@
 <h1>AdminTools</h1>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Organization</td>
-      <td><%= link_to "Show All", organizations_path %></td>
-      <td><%= link_to "Create New", new_organization_path %></td>
-    </tr>
-  </tbody>
-</table>
+<h2>New Organization</h2>
+
+<%= render 'organizations/form', organization: @organization %>
+
+<%= link_to "Show All", organizations_path %>
