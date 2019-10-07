@@ -59,13 +59,6 @@ RSpec.describe OrganizationsController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
-
   describe "GET #edit" do
     it "returns a success response" do
       organization = Organization.create! valid_attributes
@@ -82,9 +75,9 @@ RSpec.describe OrganizationsController, type: :controller do
         }.to change(Organization, :count).by(1)
       end
 
-      it "redirects to the created organization" do
+      it "redirects to the admin page" do
         post :create, params: {organization: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Organization.last)
+        expect(response).to redirect_to(admin_path)
       end
     end
 

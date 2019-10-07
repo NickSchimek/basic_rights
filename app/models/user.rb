@@ -7,4 +7,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   has_many :memberships, dependent: :destroy
   has_many :roles, through: :memberships
+
+  def site_admin?
+    admin = Role.find_by(name: 'admin')
+    memberships.find_by(role: admin)
+  end
+
 end

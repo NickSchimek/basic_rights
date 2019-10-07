@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   get 'contact', to: 'site_pages#contact'
   get 'needs', to: 'needs#grouped_index'
   get 'surplus', to: 'surplus#grouped_index'
+  get 'admin', to: 'admin_tools#show'
 
   resources :users, only: [:index, :show, :destroy]
 
-  resources :organizations do
+  resources :organizations, except: :new do
     resources :needs, only: [:index, :new, :create]
     resources :surplus, only: [:index, :new, :create]
     get 'claims', to: 'claims#org_index'
