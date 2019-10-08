@@ -4,27 +4,46 @@
     <title>BasicRights</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/0bc5a5fb61.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag "https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" %>
   </head>
 
-  <body>
-    <nav>
-      <li>
-      <%= link_to 'Home', root_path %>
-      <%= link_to 'About', about_path %>
-      <%= link_to 'Contact', contact_path %>
-      <%= link_to 'Sign in', user_session_path unless current_user %>
-      <%= link_to 'Register', new_user_registration_path unless current_user %>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete if current_user %>
-      </li>
-      <li>
-        <%= link_to 'Organizations', organizations_path %>
-        <%= link_to 'Needs', needs_path %>
-        <%= link_to 'Surplus', surplus_path %>
-      </li>
+  <body class="bg-gray-blue black-70 f6 f5-ns">
+    <nav class="bg-white shadow pt3 ph2 mb4">
+
+      <div class="mw7 center flex-ns justify-between">
+        <div class="pv2 b">
+          Basic Rights
+        </div>
+        <div class="dib mb3">
+          <%= link_to 'Home', root_path, class: "link hover-blue f6 f5-ns dib pa2" %>
+          <%= link_to 'Organizations', organizations_path, class: "link hover-blue f6 f5-ns dib pa2" %>
+          <%= link_to 'About', about_path, class: "link hover-blue f6 f5-ns dib pa2" %>
+          <%= link_to 'Add User', new_user_registration_path, class: "link hover-blue f6 f5-ns dib pa2" unless current_user %>
+          <%= link_to 'Sign Out', destroy_user_session_path, class: "link hover-blue f6 f5-ns dib pa2", method: :delete if current_user %>
+        </div>
+      </div>
+
+      <div class="mw7 center">
+        <div class="flex justify-between pb4">
+          <div>
+            <%= link_to 'Requests', needs_path, class: "link underline hover-blue f6 f5-ns dib pr4" %>
+            <%= link_to 'Offers', surplus_path, class: "link underline hover-blue f6 f5-ns dib pr3" %>
+          </div>
+          <div>
+            <a href="#" class="bg-navy white bg-animate hover-bg-dark-blue br2 pv1 ph3"><span class="fas fa-plus pr2" aria-hidden="true"></span>Request</a>
+            <a href="#" class="bg-navy white bg-animate hover-bg-dark-blue br2 pv1 ph3"><span class="fas fa-plus pr2" aria-hidden="true"></span>Offer</a>
+          </div>
+        </div>
+      </div>
+
     </nav>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

@@ -1,65 +1,77 @@
-<h1>Basic Rights</h1>
+<div class="mb4 ph2">
+  <div class="mw7 center">
 
-<h2>Needs</h2>
+    <h1 class="f3 fw7 mt0 mb3">Requests</h1>
 
-<% if @needs.empty? %>
-  <p>There are no active needs to be met</p>
-<% else %>
-  <table>
-    <thead>
-      <tr>
-        <th>Resource</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Organization</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
+    <% if @needs.empty? %>
+      <p>There are no active needs to be met</p>
+    <% else %>
 
-    <tbody>
+    <div class="mb5">
       <% @needs.each do |need| %>
-        <tr>
-          <td><%= need.resource %></td>
-          <td><%= need.description %></td>
-          <td><%= need.quantity %></td>
-          <td><%= need.organization.name %></td>
-          <td><%= link_to 'Show', need_path(need) %></td>
-          <td><%= link_to 'Fulfill', new_need_fulfillment_path(need) %></td>
-        </tr>
+        <div class="bg-white shadow pa3 pa4-l">
+          <div class="flex-l justify-between">
+            <div class="mb2 ma0-l">
+              <div class="mb2">
+                <span class="fw7"><%= need.resource %> </span>
+                <span>for <a href="#" class="link underline hover-blue"><%= need.organization.name %></a></span>
+                <span class="gray pr3"> • <span class="nowrap"><%= need.created_at.to_formatted_s(:short) %></span></span>
+              </div>
+              <div class="mb3 ma0-l">
+                <%= need.description %>
+              </div>
+            </div>
+            <div>
+              <span class="pr3"><%= need.quantity %> </span>
+              <span><%= link_to 'Fulfill', new_need_fulfillment_path(need), class: "bg-blue white bg-animate hover-bg-dark-blue fw6 br2 pv1 ph3" %></span>
+              <span>
+                <%= link_to edit_need_path(need), :action => 'go' do %>
+                  <span class="visually-hidden">Edit</span>
+                  <span class="link hover-blue fas fa-pen" aria-hidden="true"></span>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </tbody>
-  </table>
-<% end %>
+    <% end %>
+    </div>
 
-<br>
+    <h2 class="f3 fw7 mb3">Offers</h2>
 
-<h2>Surplus</h2>
+    <% if @surplus.empty? %>
+      <p>There is currently no surplus</p>
+    <% else %>
 
-<% if @surplus.empty? %>
-  <p>There is currently no surplus</p>
-<% else %>
-  <table>
-    <thead>
-      <tr>
-        <th>Resource</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Organization</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
+    <div class="mb5">
       <% @surplus.each do |surplus| %>
-        <tr>
-          <td><%= surplus.resource %></td>
-          <td><%= surplus.description %></td>
-          <td><%= surplus.quantity %></td>
-          <td><%= surplus.organization.name %></td>
-          <td><%= link_to 'Show', surplus %></td>
-          <td><%= link_to 'Claim', new_surplu_claim_path(surplus) %></td>
-        </tr>
+        <div class="bg-white shadow pa3 pa4-l">
+          <div class="flex-l justify-between">
+            <div class="mb2 ma0-l">
+              <div class="mb2">
+                <span class="fw7"><%= surplus.resource %> </span>
+                <span>for <a href="#" class="link underline hover-blue"><%= surplus.organization.name %></a></span>
+                <span class="gray pr3"> • <span class="nowrap"><%= surplus.created_at.to_formatted_s(:short) %></span></span>
+              </div>
+              <div class="mb3 ma0-l">
+                <%= surplus.description %>
+              </div>
+            </div>
+            <div>
+              <span class="pr3"><%= surplus.quantity %> </span>
+              <span><%= link_to 'Claim', new_surplu_claim_path(surplus), class: "bg-blue white bg-animate hover-bg-dark-blue fw6 br2 pv1 ph3" %></span>
+              <span>
+                <%= link_to edit_surplu_path(surplus), :action => 'go' do %>
+                  <span class="visually-hidden">Edit</span>
+                  <span class="link hover-blue fas fa-pen" aria-hidden="true"></span>
+                <% end %>
+              </span>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </tbody>
-  </table>
-<% end %>
+    <% end %>
+    </div>
+
+  </div>
+</div>
