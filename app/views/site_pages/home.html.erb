@@ -13,17 +13,18 @@
           <div class="flex-l justify-between">
             <div class="mb2 ma0-l">
               <div class="mb2">
-                <span class="fw7"><%= need.resource %> </span>
-                <span>for <a href="#" class="link underline hover-blue"><%= need.organization.name %></a></span>
-                <span class="gray pr3"> • <span class="nowrap"><%= need.created_at.to_formatted_s(:short) %></span></span>
+                <span class="fw7"><%= need.resource %> </span><%= need.description %>
               </div>
               <div class="mb3 ma0-l">
-                <%= need.description %>
+                <span>For <a href="#" class="link underline hover-blue"><%= need.organization.name %></a></span>
+                <span class="mid-gray f6 pr3"> • 
+                  <span class="nowrap"><%= need.created_at.to_formatted_s(:short) %></span>
+                </span>
               </div>
             </div>
             <div>
               <span class="pr3"><%= need.quantity %> </span>
-              <span><%= link_to 'Fulfill', new_need_fulfillment_path(need), class: "bg-blue white bg-animate hover-bg-dark-blue fw6 br2 pv1 ph3" %></span>
+              <span><%= link_to 'Give', new_need_fulfillment_path(need), class: "bg-blue white bg-animate hover-bg-dark-blue fw6 br2 pv1 ph3" %></span>
               <span>
                 <%= link_to edit_need_path(need), :action => 'go' do %>
                   <span class="visually-hidden">Edit</span>
@@ -49,12 +50,13 @@
           <div class="flex-l justify-between">
             <div class="mb2 ma0-l">
               <div class="mb2">
-                <span class="fw7"><%= surplus.resource %> </span>
-                <span>for <a href="#" class="link underline hover-blue"><%= surplus.organization.name %></a></span>
-                <span class="gray pr3"> • <span class="nowrap"><%= surplus.created_at.to_formatted_s(:short) %></span></span>
+                <span class="fw7"><%= surplus.resource %> </span><%= surplus.description %>
               </div>
               <div class="mb3 ma0-l">
-                <%= surplus.description %>
+                <span>From <a href="#" class="link underline hover-blue"><%= surplus.organization.name %></a></span>
+                <span class="mid-gray f6 pr3"> • 
+                  <span class="nowrap"><%= surplus.created_at.to_formatted_s(:short) %></span>
+                </span>
               </div>
             </div>
             <div>

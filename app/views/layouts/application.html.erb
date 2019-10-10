@@ -18,26 +18,26 @@
 
       <div class="mw7 center flex-ns justify-between">
         <div class="pv2 b">
-          Basic Rights
+          💙 Basic Rights
         </div>
-        <div class="dib mb3">
-          <%= link_to 'Home', root_path, class: "link hover-blue f6 f5-ns dib pa2" %>
-          <%= link_to 'Organizations', organizations_path, class: "link hover-blue f6 f5-ns dib pa2" %>
-          <%= link_to 'About', about_path, class: "link hover-blue f6 f5-ns dib pa2" %>
-          <%= link_to 'Add User', new_user_registration_path, class: "link hover-blue f6 f5-ns dib pa2" unless current_user %>
-          <%= link_to 'Sign Out', destroy_user_session_path, class: "link hover-blue f6 f5-ns dib pa2", method: :delete if current_user %>
+        <div class="dib mb4">
+          <%= link_to 'Home', root_path, class: "link hover-blue dib pa2" %>
+          <%= link_to 'Organizations', organizations_path, class: "link hover-blue dib pa2" %>
+          <%= link_to 'About', about_path, class: "link hover-blue dib pa2" %>
+          <%= link_to 'Add User', new_user_registration_path, class: "link hover-blue dib pa2" unless current_user %>
+          <%= link_to 'Sign Out', destroy_user_session_path, class: "link hover-blue dib pa2", method: :delete if current_user %>
         </div>
       </div>
 
       <div class="mw7 center">
         <div class="flex justify-between pb4">
           <div>
-            <%= link_to 'Requests', needs_path, class: "link underline hover-blue f6 f5-ns dib pr4" %>
-            <%= link_to 'Offers', surplus_path, class: "link underline hover-blue f6 f5-ns dib pr3" %>
+            <%= link_to 'Requests', needs_path, class: "link hover-blue dib pr3" %>
+            <%= link_to 'Offers', surplus_path, class: "link hover-blue dib pr3" %>
           </div>
           <div>
-            <a href="#" class="bg-navy white bg-animate hover-bg-dark-blue br2 pv1 ph3"><span class="fas fa-plus pr2" aria-hidden="true"></span>Request</a>
-            <a href="#" class="bg-navy white bg-animate hover-bg-dark-blue br2 pv1 ph3"><span class="fas fa-plus pr2" aria-hidden="true"></span>Offer</a>
+            <a href="#" class="bg-navy white bg-animate hover-bg-dark-blue fw6 br2 pv2 ph3 mr2"><span class="fas fa-plus pr2" aria-hidden="true"></span>Request</a>
+            <a href="#" class="bg-navy white bg-animate hover-bg-dark-blue fw6 br2 pv2 ph3"><span class="fas fa-plus pr2" aria-hidden="true"></span>Offer</a>
           </div>
         </div>
       </div>
