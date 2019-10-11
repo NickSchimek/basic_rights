@@ -9,6 +9,5 @@ RSpec.describe "users/index", type: :view do
     render
     assert_select "tr>td", :text => /Guest/, :count => 2
     assert_select "tr>td", :text => /example.org/, :count => 2
-    assert_select "tr>td", :text => "503-555-5555", :count => 2
   end
 end
