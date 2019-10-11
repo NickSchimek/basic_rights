@@ -11,7 +11,7 @@ RSpec.describe AdminToolsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "redirects for non-admin user" do
+    it "redirects when not a superuser" do
       allow(controller).to receive(:current_user).and_return(user)
       get :show
       expect(response).to have_http_status(:redirect)
