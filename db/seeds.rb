@@ -6,6 +6,20 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+## Create roles
+superuser_role = Role.create(name: 'superuser')
+admin_role = Role.create(name: 'admin')
+member_role = Role.create(name: 'member')
+
+
+## Create users
+superuser = User.create(name: 'superuser', email: 'superuser@example.org', password: 'asdf1234')
+
+
+## Assign roles
+superuser.memberships.create(role_id: superuser_role)
+
+
 ## Create orgs
 info_211 = Organization.create(name: '211_info', contact: 'Ciara', email: 'ciara@example.org', phone: '(503) 555-5555')
 portland_shelter = Organization.create(name: 'Portland Shelter', contact: 'Bill', email: 'bill@example.org', phone: '(503) 555-0000')
