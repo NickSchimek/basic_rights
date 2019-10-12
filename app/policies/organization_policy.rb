@@ -1,14 +1,14 @@
 class OrganizationPolicy < ApplicationPolicy
   def create?
-    user.site_admin?
+    user.superuser?
   end
 
   def update?
-    user.site_admin?
+    user.superuser?
   end
 
   def destroy?
-    user.site_admin?
+    user.superuser?
   end
 
 end

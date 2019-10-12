@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :roles, through: :memberships
 
-  def site_admin?
-    admin = Role.find_by(name: 'admin')
-    memberships.find_by(role: admin)
+  def superuser?
+    superuser = Role.find_by(name: 'superuser')
+    memberships.find_by(role: superuser)
   end
 
 end
