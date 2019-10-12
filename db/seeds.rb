@@ -17,7 +17,7 @@ superuser = User.create(name: 'superuser', email: 'superuser@example.org', passw
 
 
 ## Assign roles
-superuser.memberships.create(role_id: superuser_role)
+superuser.memberships.create(role: superuser_role)
 
 
 ## Create orgs
