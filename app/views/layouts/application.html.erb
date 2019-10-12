@@ -24,6 +24,7 @@
           <%= link_to 'Home', root_path, class: "link hover-blue dib pa2" %>
           <%= link_to 'Organizations', organizations_path, class: "link hover-blue dib pa2" %>
           <%= link_to 'About', about_path, class: "link hover-blue dib pa2" %>
+          <%= link_to 'Sign in', user_session_path unless current_user %>
           <%= link_to 'Sign Out', destroy_user_session_path, class: "link hover-blue dib pa2", method: :delete if current_user %>
         </div>
       </div>
