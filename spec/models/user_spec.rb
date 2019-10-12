@@ -9,5 +9,6 @@ RSpec.describe User, type: :model do
   describe 'relationships' do
     it { should have_many(:memberships).dependent(:destroy) }
     it { should have_many(:roles).through(:memberships) }
+    it { should have_one(:organization).through(:memberships) }
   end
 end

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   has_many :memberships, dependent: :destroy
   has_many :roles, through: :memberships
+  has_one :organization, through: :memberships
 
   def superuser?
     superuser = Role.find_by(name: 'superuser')
