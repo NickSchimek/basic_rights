@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_11_054824) do
+ActiveRecord::Schema.define(version: 2019_10_12_042323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_10_11_054824) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_memberships_on_organization_id"
     t.index ["role_id", "user_id"], name: "index_memberships_on_role_id_and_user_id", unique: true
     t.index ["role_id"], name: "index_memberships_on_role_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_10_11_054824) do
   add_foreign_key "claims", "surplus"
   add_foreign_key "fulfillments", "needs"
   add_foreign_key "fulfillments", "organizations"
+  add_foreign_key "memberships", "organizations"
   add_foreign_key "memberships", "roles"
   add_foreign_key "memberships", "users"
   add_foreign_key "needs", "organizations"

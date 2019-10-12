@@ -10,5 +10,7 @@ RSpec.describe Organization, type: :model do
     it { should have_many(:surplus).dependent(:destroy) }
     it { should have_many(:claims) }
     it { should have_many(:fulfillments) }
+    it { should have_many(:memberships).dependent(:destroy) }
+    it { should have_many(:users).through(:memberships) }
   end
 end
