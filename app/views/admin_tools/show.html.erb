@@ -1,7 +1,11 @@
 <h1>AdminTools</h1>
 
+<h2>New User</h2>
+
+<%= link_to 'Add User', new_user_path, class: "link hover-blue dib pa2" %>
+
 <h2>New Organization</h2>
 
 <%= render 'organizations/form', organization: @organization %>
 
-<%= link_to "Show All", organizations_path %>
+<%= link_to "Show All", organizations_path, class: "link hover-blue dib pa2" %>
