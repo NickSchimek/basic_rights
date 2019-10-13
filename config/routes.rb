@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'surplus', to: 'surplus#grouped_index'
   get 'admin', to: 'admin_tools#show'
 
-  resources :users, only: [:index, :show, :destroy]
+  resources :users, except: [:edit, :update]
 
   resources :organizations, except: :new do
     resources :needs, only: [:index, :new, :create]

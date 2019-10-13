@@ -34,6 +34,22 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+    context "with valid params" do
+      it "creates a new user" do
+        expect {
+          post :create, params: {user: valid_attributes}, session: valid_session
+        }.to change(User, :count).by(1)
+      end
+    end
+    context "with invalid params" do
+      it "returns a success response (renders 'new' view)" do
+        post :create, params: {user: invalid_attributes}, session: valid_session
+        expect(response).to be_successful
+      end
+    end
+  end
+
   describe "DELETE #destroy" do
     it "destroys the requested user" do
       user = User.create! valid_attributes
