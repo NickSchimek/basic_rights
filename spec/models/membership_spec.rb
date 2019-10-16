@@ -12,10 +12,11 @@ RSpec.describe Membership, type: :model do
   end
 
   describe 'validations' do
+    let(:superuser) { create(:user, email: 'superuser@example.org') }
+    let(:admin) { create(:user, email: 'admin@example.org') }
+    let(:member) { create(:user, email: 'member@example.org') }
+    let(:organization) { create(:organization) }
     context 'organization' do
-      let(:superuser) { create(:user, email: 'superuser@example.org') }
-      let(:admin) { create(:user, email: 'admin@example.org') }
-      let(:member) { create(:user, email: 'member@example.org') }
       it 'allows superuser to persist without belong to an organization' do
         record = Membership.create(user_id: superuser.id, role_id: superuser_role.id)
         expect(record).to be_valid
@@ -28,6 +29,13 @@ RSpec.describe Membership, type: :model do
 
       it 'does not allow member to be valid without an organization' do
         record = Membership.create(user_id: member.id, role_id: member_role.id)
+        expect(record).to_not be_valid
+      end
+    end
+    context 'unique rows' do
+      it 'for user and role combination' do
+        Membership.create(user_id: superuser.id, role_id: superuser_role.id)
+        record = Membership.create(user_id: superuser.id, role_id: superuser_role.id)
         expect(record).to_not be_valid
       end
     end

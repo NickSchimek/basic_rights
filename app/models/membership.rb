@@ -4,6 +4,7 @@ class Membership < ApplicationRecord
   belongs_to :organization, required: false
 
   validates :organization, presence: true, unless: :superuser?
+  validates :user, uniqueness: { scope: :role }
 
   def superuser?
     role_id == Role.find_by(name: 'superuser').id
