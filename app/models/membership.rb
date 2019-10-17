@@ -6,12 +6,23 @@ class Membership < ApplicationRecord
   validates :organization, absence: true, if: :superuser?
   validates :organization, presence: true, unless: :superuser?
   validates :user, uniqueness: { scope: :role }
+  validate :single_role, unless: :superuser?
 
-  def superuser_role
-    @superuser_role ||= Role.find_by(name: 'superuser').id
-  end
+  private
 
-  def superuser?
-    role_id == superuser_role
-  end
+    def superuser_role
+      @superuser_role ||= Role.find_by(name: 'superuser').id
+    end
+
+    def superuser?
+      role_id == superuser_role
+    end
+
+    def single_role
+      user = User.find(user_id)
+      if user.roles.any? { |role| role.name == 'admin' || role.name == 'member' }
+        errors.add(:user, "can't be an admin and member")
+      end
+    end
+
 end
