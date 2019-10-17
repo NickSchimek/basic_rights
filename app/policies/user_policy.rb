@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    user.superuser? || user.admin_for?(record)
+    user.superuser?
   end
 
   def show?
