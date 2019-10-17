@@ -10,13 +10,11 @@ class User < ApplicationRecord
   has_many :organizations, through: :memberships
 
   def superuser?
-    superuser = Role.find_by(name: 'superuser')
-    memberships.find_by(role: superuser)
+    roles.any? { |role| role.name == 'superuser' }
   end
 
   def admin?
-    admin = Role.find_by(name: 'admin')
-    memberships.find_by(role: admin)
+    roles.any? { |role| role.name == 'admin' }
   end
 
   def admin_for?(record)
