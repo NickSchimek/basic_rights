@@ -13,4 +13,16 @@ class User < ApplicationRecord
     memberships.find_by(role: superuser)
   end
 
+  def admin?
+    admin = Role.find_by(name: 'admin')
+    memberships.find_by(role: admin)
+  end
+
+  def admin_for?(record)
+    admin? && organization == record.organization
+  end
+
+  def organization
+    organizations.first
+  end
 end
