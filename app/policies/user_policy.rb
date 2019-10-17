@@ -6,6 +6,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    user.superuser?
+    user.superuser? || user.admin?
   end
 end

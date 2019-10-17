@@ -13,8 +13,18 @@ RSpec.describe UserPolicy, type: :policy do
 
   permissions :new?, :create? do
     it 'grants access to the superuser' do
-      Membership.create(role_id: superuser_role.id, user_id: superuser.id)
+      Membership.create!(role_id: superuser_role.id, user_id: superuser.id)
       expect(subject).to permit(superuser)
     end
+
+    it 'grants access to the admin' do
+      Membership.create!(role_id: admin_role.id, user_id: admin.id, organization_id: info_211.id)
+      expect(subject).to permit(admin)
+    end
+
+    it 'denies access to the member' do
+      expect(subject).to_not permit(member)
+    end
+  end
   end
 end
