@@ -9,6 +9,10 @@ class UserPolicy < ApplicationPolicy
     user.superuser? || user.admin_for?(record)
   end
 
+  def show?
+    true
+  end
+
   def create?
     user.superuser? || user.admin?
   end

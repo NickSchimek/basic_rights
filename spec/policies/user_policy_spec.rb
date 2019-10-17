@@ -47,7 +47,20 @@ RSpec.describe UserPolicy, type: :policy do
   end
 
   permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it 'grants access to your own show page' do
+      user = User.find(member.id)
+      expect(subject).to permit(member, user)
+    end
+
+    it 'grants access to other users show page' do
+      user = User.find(admin.id)
+      expect(subject).to permit(member, user)
+    end
+
+    it 'grants access to the superuser' do
+      Membership.create!(role_id: superuser_role.id, user_id: superuser.id)
+      expect(subject).to permit(superuser)
+    end
   end
 
   permissions :new?, :create? do
