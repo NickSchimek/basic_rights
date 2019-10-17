@@ -17,6 +17,7 @@ RSpec.describe Membership, type: :model do
     let(:admin) { create(:user, email: 'admin@example.org') }
     let(:member) { create(:user, email: 'member@example.org') }
     let(:organization) { create(:organization) }
+    let(:other_organization) { create(:organization, name: 'other') }
     context 'organization' do
       it 'allows superuser to persist without belong to an organization' do
         record = Membership.new(user_id: superuser.id, role_id: superuser_role.id)
@@ -54,6 +55,12 @@ RSpec.describe Membership, type: :model do
         Membership.create(user_id: superuser.id, role_id: superuser_role.id)
         record = Membership.new(user_id: member.id, role_id: member_role.id, organization_id: organization.id)
         expect(record).to be_valid
+      end
+
+      it 'does not allow a user to be a member of another organization' do
+        Membership.create(user_id: admin.id, role_id: admin_role.id, organization_id: organization.id)
+        record = Membership.new(user_id: admin.id, role_id: member_role.id, organization_id: other_organization.id)
+        expect(record).to_not be_valid
       end
     end
     context 'unique rows' do
