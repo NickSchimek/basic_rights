@@ -4,9 +4,7 @@ require 'pundit/rspec'
 RSpec.describe AdminToolPolicy, type: :policy do
   subject { described_class }
 
-  Role.create(name: 'superuser')
-
-  superuser_role = Role.find_by(name: 'superuser')
+  let(:superuser_role) { Role.create(name: 'superuser') }
 
   let(:organization) { create(:organization) }
 
