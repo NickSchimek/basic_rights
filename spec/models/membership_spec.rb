@@ -18,29 +18,29 @@ RSpec.describe Membership, type: :model do
     let(:organization) { create(:organization) }
     context 'organization' do
       it 'allows superuser to persist without belong to an organization' do
-        record = Membership.create(user_id: superuser.id, role_id: superuser_role.id)
+        record = Membership.new(user_id: superuser.id, role_id: superuser_role.id)
         expect(record).to be_valid
       end
 
       it 'denies validation when superuser is being assigned to an organization' do
-        record = Membership.create(user_id: superuser.id, role_id: superuser_role.id, organization_id: organization.id)
+        record = Membership.new(user_id: superuser.id, role_id: superuser_role.id, organization_id: organization.id)
         expect(record).to_not be_valid
       end
 
       it 'does not allow admin to be valid without an organization' do
-        record = Membership.create(user_id: admin.id, role_id: admin_role.id)
+        record = Membership.new(user_id: admin.id, role_id: admin_role.id)
         expect(record).to_not be_valid
       end
 
       it 'does not allow member to be valid without an organization' do
-        record = Membership.create(user_id: member.id, role_id: member_role.id)
+        record = Membership.new(user_id: member.id, role_id: member_role.id)
         expect(record).to_not be_valid
       end
     end
     context 'unique rows' do
       it 'for user and role combination' do
         Membership.create(user_id: superuser.id, role_id: superuser_role.id)
-        record = Membership.create(user_id: superuser.id, role_id: superuser_role.id)
+        record = Membership.new(user_id: superuser.id, role_id: superuser_role.id)
         expect(record).to_not be_valid
       end
     end
