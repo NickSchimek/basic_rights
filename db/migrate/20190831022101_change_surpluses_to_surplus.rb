@@ -1,5 +1,5 @@
 class ChangeSurplusesToSurplus < ActiveRecord::Migration[6.0]
   def change
-    rename_table :surplus, :surplus
+    rename_table :surpluses, :surplus
   end
 end
