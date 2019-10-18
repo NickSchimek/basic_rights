@@ -11,11 +11,11 @@ class Membership < ApplicationRecord
   private
 
     def superuser_role
-      @superuser_role ||= Role.find_by(name: 'superuser').id
+      @superuser_role ||= Role.find_by(name: 'superuser')
     end
 
     def superuser?
-      role_id == superuser_role
+      role_id == superuser_role.id
     end
 
     def single_role

@@ -18,6 +18,8 @@ RSpec.describe UsersController, type: :controller do
   # UsersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before(:each) { expect(controller).to receive(:authorize).and_return(true) }
+
   describe "GET #index" do
     it "returns a success response" do
       User.create! valid_attributes
@@ -31,6 +33,22 @@ RSpec.describe UsersController, type: :controller do
       user = User.create! valid_attributes
       get :show, params: {id: user.to_param}, session: valid_session
       expect(response).to be_successful
+    end
+  end
+
+  describe "POST #create" do
+    context "with valid params" do
+      it "creates a new user" do
+        expect {
+          post :create, params: {user: valid_attributes}, session: valid_session
+        }.to change(User, :count).by(1)
+      end
+    end
+    context "with invalid params" do
+      it "returns a success response (renders 'new' view)" do
+        post :create, params: {user: invalid_attributes}, session: valid_session
+        expect(response).to be_successful
+      end
     end
   end
 
