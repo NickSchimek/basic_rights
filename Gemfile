@@ -33,7 +33,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rspec-rails', '~> 4.0.0.beta3'
   gem 'factory_bot_rails'
 end
 
