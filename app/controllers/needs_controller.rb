@@ -7,7 +7,10 @@ class NeedsController < ApplicationController
   end
 
   def grouped_index
-    @organizations = Organization.all.includes(:needs)
+    active = params.fetch(:active, true)
+    @organizations = Organization.all.includes(:needs).
+                                      where('needs.active = ?', active).
+                                      references(:needs)
   end
 
   def show

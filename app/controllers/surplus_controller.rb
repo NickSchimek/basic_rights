@@ -7,7 +7,10 @@ class SurplusController < ApplicationController
   end
 
   def grouped_index
-    @organizations = Organization.all.includes(:surplus)
+    active = params.fetch(:active, true)
+    @organizations = Organization.all.includes(:surplus).
+                                      where('surplus.active = ?', active).
+                                      references(:surplus)
   end
 
   def show

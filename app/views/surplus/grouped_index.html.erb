@@ -1,4 +1,6 @@
 <h1>Surplus</h1>
+<%= link_to 'Active', { active: true } %>
+<%= link_to 'Inactive', { active: false }%>
 
 <% @organizations.each do |organization| %>
 <h2><%= organization.name %></h2>
