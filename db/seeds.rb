@@ -14,11 +14,8 @@ member_role = Role.create(name: 'member')
 
 ## Create users
 superuser = User.create(name: 'superuser', email: 'superuser@example.org', password: 'asdf1234')
-
-
-## Assign roles
-superuser.memberships.create(role: superuser_role)
-
+admin = User.create(name: 'admin', email: 'admin@example.org', password: 'asdf1234')
+member = User.create(name: 'member', email: 'member@example.org', password: 'asdf1234')
 
 ## Create orgs
 info_211 = Organization.create(name: '211_info', contact: 'Ciara', email: 'ciara@example.org', phone: '(503) 555-5555')
@@ -27,6 +24,11 @@ multnomah_shelter = Organization.create(name: 'Multnomah Shelter', contact: 'Bob
 washington_shelter = Organization.create(name: 'Washington Shelter', contact: 'Stacey', email: 'stacey@example.org', phone: '(503) 555-2222')
 
 orgs = [info_211, portland_shelter, multnomah_shelter, washington_shelter]
+
+## Assign roles
+superuser.memberships.create(role: superuser_role)
+admin.memberships.create(role: admin_role, organization: info_211)
+member.memberships.create(role: member_role, organization: info_211)
 
 ## Create some needs
 need_childrens_clothing = {resource: "Children's clothing", description: 'All sizes', quantity: '100'}
