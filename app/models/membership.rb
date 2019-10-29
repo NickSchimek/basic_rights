@@ -3,7 +3,6 @@ class Membership < ApplicationRecord
   belongs_to :user
   belongs_to :organization, required: false
 
-  validates :organization, absence: true, if: :superuser?
   validates :organization, presence: true, unless: :superuser?
   validates :user, uniqueness: { scope: :role }
   validate :single_role, unless: :superuser?

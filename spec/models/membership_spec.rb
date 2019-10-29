@@ -24,9 +24,9 @@ RSpec.describe Membership, type: :model do
         expect(record).to be_valid
       end
 
-      it 'denies validation when superuser is being assigned to an organization' do
+      it 'allows superuser to be assigned to an organization' do
         record = Membership.new(user_id: superuser.id, role_id: superuser_role.id, organization_id: organization.id)
-        expect(record).to_not be_valid
+        expect(record).to be_valid
       end
 
       it 'does not allow admin to be valid without an organization' do
