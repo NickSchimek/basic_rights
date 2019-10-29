@@ -45,16 +45,16 @@ RSpec.describe Membership, type: :model do
         expect(record).to_not be_valid
       end
 
-      it 'allows superuser to be an admin' do
+      it 'does not allow superuser to be an admin' do
         Membership.create(user_id: superuser.id, role_id: superuser_role.id)
         record = Membership.new(user_id: superuser.id, role_id: admin_role.id, organization_id: organization.id)
-        expect(record).to be_valid
+        expect(record).to_not be_valid
       end
 
-      it 'allows superuser to be a member' do
+      it 'does not allow superuser to be a member' do
         Membership.create(user_id: superuser.id, role_id: superuser_role.id)
-        record = Membership.new(user_id: member.id, role_id: member_role.id, organization_id: organization.id)
-        expect(record).to be_valid
+        record = Membership.new(user_id: superuser.id, role_id: member_role.id, organization_id: organization.id)
+        expect(record).to_not be_valid
       end
 
       it 'does not allow a user to be a member of another organization' do
