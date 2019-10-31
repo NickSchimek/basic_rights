@@ -3,10 +3,9 @@ class Membership < ApplicationRecord
   belongs_to :user
   belongs_to :organization, required: false
 
-  validates :organization, absence: true, if: :superuser?
   validates :organization, presence: true, unless: :superuser?
   validates :user, uniqueness: { scope: :role }
-  validate :single_role, unless: :superuser?
+  validate :single_role
 
   private
 
@@ -19,9 +18,9 @@ class Membership < ApplicationRecord
     end
 
     def single_role
-      user = User.find(user_id)
-      if user.roles.any? { |role| role.name == 'admin' || role.name == 'member' }
-        errors.add(:user, "can't be an admin and member")
+      user = User.find_by(id: user_id)
+      if user && user.memberships.any?
+        errors.add(:user, "A role is already assigned")
       end
     end
 
