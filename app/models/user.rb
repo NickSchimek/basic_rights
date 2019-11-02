@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def organization
     organizations.first
   end
+
+  def role
+    roles.first.name
+  end
 end

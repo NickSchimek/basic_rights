@@ -8,4 +8,14 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Organization:</strong>
+  <%= @user.organization.name if @user.organization %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role.capitalize %>
+</p>
+
 <%= link_to 'Back', users_path %>
