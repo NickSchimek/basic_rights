@@ -26,6 +26,29 @@
     <%= form.password_field :password %>
   </div>
 
+  <div class="field">
+    <%= label :organization, :id, "Organization" %>
+    <% if current_user.superuser? %>
+      <%= collection_select :organization, :id, Organization.all, :id, :name,
+                            include_blank: true,
+                            selected: current_user.organization&.id %>
+    <% else %>
+      <%= hidden_field :organization, :id, value: current_user.organization&.id %>
+      <%= link_to current_user.organization&.name, current_user.organization %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <% if current_user.superuser? %>
+      <%= radio_button :role, :name, :superuser %>
+      <%= label :role, :name, "Superuser" %>
+    <% end %>
+    <%= radio_button :role, :name, :admin %>
+    <%= label :role, :name, "Admin" %>
+    <%= radio_button :role, :name, :member %>
+    <%= label :role, :name, "Member" %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
