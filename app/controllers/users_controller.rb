@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.memberships.new(membership_params)
     authorize @user
 
     respond_to do |format|
@@ -47,6 +48,18 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    def membership_params
+      { role: role_param, organization: organization_param }
+    end
+
+    def role_param
+      Role.find_by(name: params.fetch(:role, {})[:name])
+    end
+
+    def organization_param
+      Organization.find_by(id: params[:organization][:id])
     end
 
     def authorize_user
