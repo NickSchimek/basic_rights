@@ -9,6 +9,10 @@ RSpec.describe UsersController, type: :controller do
     attributes_for(:user)
   }
 
+  let(:role) { create(:role) }
+
+  let(:organization) { create(:organization) }
+
   let(:invalid_attributes) {
     { email: 'invalid_email' }
   }
@@ -40,13 +44,14 @@ RSpec.describe UsersController, type: :controller do
     context "with valid params" do
       it "creates a new user" do
         expect {
-          post :create, params: {user: valid_attributes}, session: valid_session
-        }.to change(User, :count).by(1)
+          post :create, params: { user: valid_attributes, role: { name: role.name }, organization: { id: organization.id } }, session: valid_session
+        }.to change(User,       :count).by(1).
+         and change(Membership, :count).by(1)
       end
     end
     context "with invalid params" do
       it "returns a success response (renders 'new' view)" do
-        post :create, params: {user: invalid_attributes}, session: valid_session
+        post :create, params: { user: invalid_attributes, role: { name: role.name }, organization: { id: organization.id } }, session: valid_session
         expect(response).to be_successful
       end
     end
