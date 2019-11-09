@@ -14,7 +14,7 @@ class Membership < ApplicationRecord
     end
 
     def superuser?
-      role_id == superuser_role.id
+      superuser_role && role_id == superuser_role.id
     end
 
     def single_role

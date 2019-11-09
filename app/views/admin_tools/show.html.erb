@@ -4,8 +4,10 @@
 
 <%= link_to 'Add User', new_user_path, class: "link hover-blue dib pa2" %>
 
-<h2>New Organization</h2>
+<% if current_user.superuser? %>
+  <h2>New Organization</h2>
 
-<%= render 'organizations/form', organization: @organization %>
+  <%= render 'organizations/form', organization: @organization %>
+<% end %>
 
 <%= link_to "Show All", organizations_path, class: "link hover-blue dib pa2" %>
