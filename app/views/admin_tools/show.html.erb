@@ -1,13 +1,18 @@
-<h1>AdminTools</h1>
+<div class="mb4 ph2">
+  <div class="mw7 center">
+		<h1 class="f3 fw7 mb3">Admin Tools</h1>
 
-<h2>New User</h2>
+			<% if current_user.superuser? %>
+				<div class="bg-white shadow pa3 pa4-l mb5">
+				  <h2 class="f4 fw7 mb4">New Organization</h2>
 
-<%= link_to 'Add User', new_user_path, class: "link hover-blue dib pa2" %>
+				  <%= render 'organizations/form', organization: @organization %>
+				</div>  
+			<% end %>
 
-<% if current_user.superuser? %>
-  <h2>New Organization</h2>
+			<%= link_to new_user_path, class: "link hover-blue dib pa2" do %>
+        <span class="fas fa-plus-circle pr1" aria-hidden="true"></span>User
+      <% end %>
 
-  <%= render 'organizations/form', organization: @organization %>
-<% end %>
-
-<%= link_to "Show All", organizations_path, class: "link hover-blue dib pa2" %>
+	</div>
+</div>
