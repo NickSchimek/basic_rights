@@ -1,4 +1,4 @@
-require 'rails_helper'
+ require 'rails_helper'
 
 RSpec.describe "organizations/index", type: :view do
   before(:each) do
@@ -20,9 +20,9 @@ RSpec.describe "organizations/index", type: :view do
 
   it "renders a list of organizations" do
     render
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => "Contact".to_s, :count => 2
-    assert_select "tr>td", :text => "Email".to_s, :count => 2
-    assert_select "tr>td", :text => "Phone".to_s, :count => 2
+    assert_select "h2", :text => "Name".to_s, :count => 2
+    assert_select "div", :text => "Contact".to_s, :count => 2
+    assert_select "div", :text => "Email".to_s, :count => 2
+    assert_select "div", :text => "Phone".to_s, :count => 2
   end
 end
