@@ -1,29 +1,31 @@
-<h1>Organizations</h1>
+<div class="mb4 ph2">
+  <div class="mw7 center">
+    <h1 class="f3 fw7 mt0 mb3">Organizations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Contact</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @organizations.each do |organization| %>
-      <tr>
-        <td><%= organization.name %></td>
-        <td><%= organization.contact %></td>
-        <td><%= organization.email %></td>
-        <td><%= organization.phone %></td>
-        <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="bg-white shadow pa3 pa4-l">
+        <h2 class="f4 fw7 mb3"><%= organization.name %></h2>
+        <div class="cf">
+          <div class="fl-l w-50-l pr4-l">
+            <h3 class="fw7 mb1">Address</h3>
+            <div class="mb3">123 Placeholder Ave<br>Portland, OR 97202</div>
+            <h3 class="fw7 mb1">Dropoff / pickup hours</h3>
+            <div class="mb3">Monday–Friday 9–5</div>
+            <h3 class="fw7 mb1">Contact</h3>
+            <div class="mb1"><%= organization.contact %></div>
+            <div class="mb1"><%= organization.email %></div>
+            <div class="mb3"><%= organization.phone %></div>
+          </div>
+          <div class="fl-l w-50-l">
+            <h3 class="fw7 mb1">Additional Information</h3>
+            <div class="mb4">Additional info placeholder.</div>
+            <ul>
+              <li class="list pb2"><%= link_to 'Show', organization, class: "link underline hover-blue" %></li>
+              <li class="list pb2"><%= link_to 'Edit', edit_organization_path(organization), class: "link underline hover-blue" %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
+  </div>
+</div>
