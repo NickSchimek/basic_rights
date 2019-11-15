@@ -5,14 +5,53 @@
 			<% if current_user.superuser? %>
 				<div class="bg-white shadow pa3 pa4-l mb5">
 				  <h2 class="f4 fw7 mb4">New Organization</h2>
-
 				  <%= render 'organizations/form', organization: @organization %>
 				</div>  
 			<% end %>
 
-			<%= link_to new_user_path, class: "link hover-blue dib pa2" do %>
-        <span class="fas fa-plus-circle pr1" aria-hidden="true"></span>User
-      <% end %>
+			<section class="cf bg-white shadow mb5">
+		    <div class="pv4 ph3">
+		      <h2 class="f4 fw7 dib">Users</h1>
+					<%= link_to new_user_path, class: "link hover-blue fw6 mr3 db fr" do %>
+		        <span class="fas fa-plus-circle fw6" aria-hidden="true"></span>
+		        <span class="visually-hidden">Add</span>User
+		      <% end %>
+		    </div>
+		    <div class="overflow-auto">
+		      <table class="f6 w-100 mw8 center" cellspacing="0">
+		        <thead>
+		          <tr>
+		            <th class="fw6 bb bt b--black-20 tl pa3 bg-white">Name</th>
+		            <th class="fw6 bb bt b--black-20 tl pa3 bg-white">Email</th>
+		            <th class="fw6 bb bt b--black-20 tl pa3 bg-white">Role</th>
+		          </tr>
+		        </thead>
+		        <tbody class="lh-copy">
+		          <tr>
+		            <td class="pa3 bb b--black-20">
+		              <a href="#" class="underline">Jane Dolby</a>
+		            </td>
+		            <td class="pa3 bb b--black-20">janedolby@domainname.com</td>
+		            <td class="pa3 bb b--black-20">Admin</td>
+		          </tr>
+		          <tr>
+		            <td class="pa3 bb b--black-20">
+		              <a href="#" class="underline">John Holmes</a>
+		            </td>
+		            <td class="pa3 bb b--black-20">jholmes@domainname.com</td>
+		            <td class="pa3 bb b--black-20">Member</td>
+		          </tr>
+		          <tr>
+		            <td class="pa3 bb b--black-20">
+		              <a href="#" class="underline">Jaire Alexander</a>
+		            </td>
+		            <td class="pa3 bb b--black-20">jalexander@domainname.com</td>
+		            <td class="pa3 bb b--black-20">Member</td>
+		          </tr>
+		        </tbody>
+		      </table>
+		    </div>
+			</section>
 
 	</div>
 </div>
