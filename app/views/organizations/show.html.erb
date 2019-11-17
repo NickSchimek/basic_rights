@@ -1,22 +1,24 @@
-<p>
-  <strong>Name:</strong>
-  <%= @organization.name %>
-</p>
-
-<p>
-  <strong>Contact:</strong>
-  <%= @organization.contact %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @organization.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @organization.phone %>
-</p>
-
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
+<div class="mb4 ph2">
+  <div class="mw7 center">
+    <div class="bg-white shadow pa3 pa4-l">
+      <h1 class="f4 fw7 mb3"><%= @organization.name %></h2>
+      <div class="cf">
+        <div class="fl-l w-50-l pr4-l">
+          <h2 class="fw7 mb1">Address</h2>
+          <div class="mb3">123 Placeholder Ave<br>Portland, OR 97202</div>
+          <h2 class="fw7 mb1">Dropoff / pickup hours</h2>
+          <div class="mb3">Monday–Friday 9–5</div>
+          <h2 class="fw7 mb1">Contact</h2>
+          <div class="mb1"><%= @organization.contact %></div>
+          <div class="mb1"><%= @organization.email %></div>
+          <div class="mb3"><%= @organization.phone %></div>
+        </div>
+        <div class="fl-l w-50-l">
+          <h2 class="fw7 mb1">Additional Information</h2>
+          <div class="mb4">Additional info placeholder.</div>
+					<%= link_to 'Edit', edit_organization_path(@organization), class: "link underline hover-blue" %>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
