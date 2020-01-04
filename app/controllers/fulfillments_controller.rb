@@ -13,6 +13,9 @@ class FulfillmentsController < ApplicationController
     @fulfillment = @need.fulfillments.new
   end
 
+  def drop_off
+  end
+
   def edit
   end
 
