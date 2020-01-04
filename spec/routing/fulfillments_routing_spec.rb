@@ -10,6 +10,11 @@ RSpec.describe FulfillmentsController, type: :routing do
       expect(:get => "needs/1/fulfillments/new").to route_to("fulfillments#new", need_id: '1')
     end
 
+    it "routes to #drop_off" do
+      expect(:get => "needs/1/fulfillments/new/drop_off").
+                 to route_to("fulfillments#drop_off", need_id: '1')
+    end
+
     it "routes to #show" do
       expect(:get => "needs/1/fulfillments/1").to route_to("fulfillments#show", id: '1', need_id: '1')
     end
@@ -17,7 +22,6 @@ RSpec.describe FulfillmentsController, type: :routing do
     it "routes to #edit" do
       expect(:get => "needs/1/fulfillments/1/edit").to route_to("fulfillments#edit", id: '1', need_id: '1')
     end
-
 
     it "routes to #create" do
       expect(:post => "needs/1/fulfillments").to route_to("fulfillments#create", need_id: '1')
