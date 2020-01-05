@@ -1,7 +1,7 @@
 require 'rails_helper'
 include AuthHelper
 
-describe "partial fulfillment view", type: :feature do
+describe "new drop off view", type: :feature do
 
   before :each do
     organization = create(:organization)
@@ -11,9 +11,15 @@ describe "partial fulfillment view", type: :feature do
     sign_in(@user)
   end
 
-  it "loads partial fulfillment view" do
+  it "renders" do
     visit edit_need_path(@need)
     click_link('Add Partial Fulfillment')
-    expect(page).to have_current_path(new_need_fulfillment_path(@need))
+    expect(page).to have_current_path(drop_off_new_need_fulfillment_path(@need))
+  end
+
+  it "renders the previous page when the user clicks cancel" do
+    visit drop_off_new_need_fulfillment_path(@need)
+    click_link('Cancel')
+    expect(page).to have_current_path(edit_need_path(@need))
   end
 end
