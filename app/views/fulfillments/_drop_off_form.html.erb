@@ -1,0 +1,38 @@
+<%= form_with(model: [@need, fulfillment], local: true) do |form| %>
+  <% if fulfillment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fulfillment.errors.count, "error") %> prohibited this fulfillment from being saved:</h2>
+
+      <ul>
+        <% fulfillment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= link_to @need.resource, need_path(@need) %> <%= @need.description %>
+  </div>
+
+  <div class="field">
+    <%= label :organization, :id, "Organization" %>
+    <%= collection_select :fulfillment, :organization_id, Organization.all, :id, :name,
+                          include_blank: true,
+                          selected: @need.organization %>
+    <%= hidden_field :fulfillment, :received, value: true %>
+  </div>
+
+  <div class="field">
+    <%= hidden_field :fulfillment, :active, value: false %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

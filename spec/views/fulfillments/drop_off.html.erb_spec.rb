@@ -17,9 +17,7 @@ RSpec.describe "fulfillments/drop_off", type: :view do
 
       assert_select "input[name=?]", "fulfillment[active]"
 
-      assert_select "input[name=?]", "fulfillment[need]"
-
-      assert_select "input[name=?]", "fulfillment[organization_id]"
+      assert_select "select[name=?]", "fulfillment[organization_id]"
     end
   end
 end
