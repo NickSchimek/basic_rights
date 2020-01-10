@@ -1,6 +1,7 @@
 class FulfillmentsController < ApplicationController
   before_action :set_fulfillment, only: [:show, :edit, :update, :destroy]
   before_action :set_need
+  before_action :set_user
 
   def index
     @fulfillments = @need.fulfillments.all.includes(:need, :organization)
@@ -62,6 +63,10 @@ class FulfillmentsController < ApplicationController
 
     def set_need
       @need = Need.find(params[:need_id])
+    end
+
+    def set_user
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
