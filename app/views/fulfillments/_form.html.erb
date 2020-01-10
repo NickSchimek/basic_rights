@@ -12,28 +12,27 @@
   <% end %>
 
   <div class="field">
+    <%= hidden_field :fulfillment, :need %>
+    <%= link_to @need.resource, need_path(@need) %> <%= @need.description %>
+  </div>
+
+  <div class="field">
+    <%= label :organization, :id, "Organization" %>
+    <%= hidden_field :fulfillment, :organization_id, value: user.organization.id %>
+    <%= link_to user.organization&.name, user.organization %>
+  </div>
+
+  <div class="field">
+    <%= hidden_field :fulfillment, :active, value: true %>
+  </div>
+
+  <div class="field">
+    <%= hidden_field :fulfillment, :received, value: true %>
+  </div>
+
+  <div class="field">
     <%= form.label :quantity %>
     <%= form.text_field :quantity %>
-  </div>
-
-  <div class="field">
-    <%= form.label :received %>
-    <%= form.text_field :received %>
-  </div>
-
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.text_field :active %>
-  </div>
-
-  <div class="field">
-    <%= form.label :need %>
-    <%= form.text_field :need %>
-  </div>
-
-  <div class="field">
-    <%= form.label :organization_id %>
-    <%= form.text_field :organization_id %>
   </div>
 
   <div class="actions">
