@@ -12,27 +12,31 @@
   <% end %>
 
   <div class="field">
+    <%= form.hidden_field :need %>
     <%= link_to @need.resource, need_path(@need) %> <%= @need.description %>
   </div>
 
   <div class="field">
-    <%= label :organization, :id, "Organization" %>
-    <%= collection_select :fulfillment, :organization_id, Organization.all, :id, :name,
-                          include_blank: true,
+    <%= form.label :organization_id %>
+    <%= form.collection_select :organization_id, Organization.all, :id, :name,
+                          include_blank: false,
                           selected: @need.organization %>
-    <%= hidden_field :fulfillment, :received, value: true %>
   </div>
 
   <div class="field">
-    <%= hidden_field :fulfillment, :active, value: false %>
+    <%= form.hidden_field :active, value: false %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :received, value: true %>
   </div>
 
   <div class="field">
     <%= form.label :quantity %>
-    <%= form.text_field :quantity %>
+    <%= form.number_field :quantity %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button "Add Partial Fulfillment" %>
   </div>
 <% end %>
