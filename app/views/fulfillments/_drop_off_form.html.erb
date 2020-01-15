@@ -18,12 +18,13 @@
 
   <div class="field">
     <%= form.label :organization_id %>
-    <%= form.hidden_field :organization_id, value: user.organization.id %>
-    <%= link_to user.organization&.name, user.organization %>
+    <%= form.collection_select :organization_id, Organization.all, :id, :name,
+                          include_blank: false,
+                          selected: @need.organization %>
   </div>
 
   <div class="field">
-    <%= form.hidden_field :active, value: true %>
+    <%= form.hidden_field :active, value: false %>
   </div>
 
   <div class="field">
@@ -36,6 +37,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button "Add Partial Fulfillment" %>
   </div>
 <% end %>

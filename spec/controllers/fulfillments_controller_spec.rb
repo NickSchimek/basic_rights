@@ -42,6 +42,13 @@ RSpec.describe FulfillmentsController, type: :controller do
       end
     end
 
+    describe "#drop_off" do
+      it "returns a success response" do
+        get :drop_off, params: { need_id: need }, session: valid_session
+        expect(response).to be_successful
+      end
+    end
+
     describe "#edit" do
       it "returns a success response" do
         get :edit, params: { id: fulfillment.to_param, need_id: need }, session: valid_session

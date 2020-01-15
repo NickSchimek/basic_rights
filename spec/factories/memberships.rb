@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :membership do
-    role { nil }
-    user { nil }
+    role
+    user
+    organization
   end
 end

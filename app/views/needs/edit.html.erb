@@ -2,5 +2,5 @@
 
 <%= render 'form', need: @need %>
 
-<%= link_to 'Show', @need %> |
+<%= link_to 'Add Partial Fulfillment', drop_off_new_need_fulfillment_path(@need) %> |
 <%= link_to 'Back', organization_needs_path(@need.organization) %>

@@ -4,6 +4,7 @@ RSpec.describe "fulfillments/edit", type: :view do
   before(:each) do
     @fulfillment = assign(:fulfillment, create(:fulfillment))
     @need = assign(:need, @fulfillment.need)
+    assign(:user, create(:user, :admin))
   end
 
   it "renders the edit fulfillment form" do

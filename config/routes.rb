@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :claims
   end
   resources :needs, only: [:show, :edit, :update, :destroy] do
-    resources :fulfillments
+    resources :fulfillments do
+      get 'drop_off', on: :new
+    end
   end
 end
