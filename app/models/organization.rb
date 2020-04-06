@@ -6,4 +6,9 @@ class Organization < ApplicationRecord
   has_many :fulfillments
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
+
+  enum contact_method: {
+    call: 'call',
+    text: 'text'
+  }
 end
