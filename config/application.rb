@@ -31,5 +31,8 @@ module BasicRights
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Use structure.sql
+    config.active_record.schema_format = :sql
   end
 end

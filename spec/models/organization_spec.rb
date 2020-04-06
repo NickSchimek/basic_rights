@@ -13,4 +13,12 @@ RSpec.describe Organization, type: :model do
     it { should have_many(:memberships).dependent(:destroy) }
     it { should have_many(:users).through(:memberships) }
   end
+
+  describe 'enum contact method' do
+    it do
+      should define_enum_for(:contact_method).
+        with_values(call: 'call', text: 'text').
+        backed_by_column_of_type(:enum)
+    end
+  end
 end
