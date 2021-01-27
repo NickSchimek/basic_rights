@@ -16,7 +16,7 @@ gem 'webpacker', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.11'
 
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'pundit'
